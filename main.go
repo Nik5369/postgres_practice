@@ -2,9 +2,7 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"postgres_connection/feature_postgres/simple_connection"
-	"postgres_connection/feature_postgres/simple_sql"
 )
 
 func main() {
@@ -19,19 +17,34 @@ func main() {
 	// 	panic(err)
 	// }
 
-	if err := simple_sql.CreateTable(conn, ctx); err != nil {
-		panic(err)
-	} else {
-		fmt.Println("Table created successfully")
-	}
+	// if err := simple_sql.CreateTable(conn, ctx); err != nil {
+	// 	panic(err)
+	// } else {
+	// 	fmt.Println("Table created successfully")
+	// }
 
-	// if err := simple_sql.InsertRow(conn, ctx, "обед", "покушал", false, time.Now()); err != nil {
+	// if err := simple_sql.InsertRow(
+	// 	conn,
+	// 	ctx,
+	// 	simple_sql.TaskModel{
+	// 		Title:       "погулять с кошкой",
+	// 		Description: "надо погулять с кошкой 3 раза за день",
+	// 		Completed:   false,
+	// 		Created_at:  time.Now()},
+	// ); err != nil {
 	// 	panic(err)
 	// } else {
 	// 	fmt.Println("Insert successfully")
 	// }
 
-	// if err := simple_sql.UpdateRow(conn, ctx); err != nil {
+	// tasks, err := simple_sql.SelectRows(conn, ctx)
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// task := tasks[4]
+	// task.Completed = true
+	// if err := simple_sql.UpdateTask(conn, ctx, task); err != nil {
 	// 	panic(err)
 	// } else {
 	// 	fmt.Println("Update successfully")
@@ -42,4 +55,5 @@ func main() {
 	// } else {
 	// 	fmt.Println("Delete successfully")
 	// }
+
 }

@@ -6,12 +6,12 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-func DeleteRow(conn *pgx.Conn, ctx context.Context) error {
+func DeleteRow(conn *pgx.Conn, ctx context.Context, tasksIDs []int) error {
 	sqlQuery := `
 	DELETE FROM tasks
-	WHERE id = 5
+	WHERE id = ANY($1)
 	;`
 
-	_, err := conn.Exec(ctx, sqlQuery)
+	_, err := conn.Exec(ctx, sqlQuery, tasksIDs)
 	return err
 }
